@@ -90,9 +90,85 @@ rename_columns = {
 
 final = final.rename(columns=rename_columns)
 
+# Pemetaan provinsi berdasarkan kelompok pulau
+PULAU = {
+    "Sumatera": [
+        "Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi",
+        "Sumatera Selatan", "Bengkulu", "Lampung",
+        "Kepulauan Bangka Belitung", "Kepulauan Riau"
+    ],
+    "Jawa": [
+        "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta",
+        "Jawa Timur", "Banten"
+    ],
+    "Bali dan Nusa Tenggara": [
+        "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur"
+    ],
+    "Kalimantan": [
+        "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan",
+        "Kalimantan Timur", "Kalimantan Utara"
+    ],
+    "Sulawesi": [
+        "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan",
+        "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat"
+    ],
+    "Maluku": [
+        "Maluku", "Maluku Utara"
+    ],
+    "Papua": [
+        "Papua Barat", "Papua Barat Daya", "Papua",
+        "Papua Selatan", "Papua Tengah", "Papua Pegunungan"
+    ]
+}
+
+province_to_island = {
+    province: island
+    for island, provinces in PULAU.items()
+    for province in provinces
+}
+
+# Menambahkan kelompok wilayah
+final["wilayah"] = final["provinsi"].map(province_to_island)
+
+# Validasi pemetaan
+unmapped = final.loc[final["wilayah"].isna(), "provinsi"].tolist()
+
+assert not unmapped, (
+    f"Ada provinsi yang belum terpetakan: {unmapped}"
+)
+
+print("Seluruh provinsi berhasil dipetakan ke kelompok pulau.")
+
+# Mengubah kolom jumlah menjadi integer nullable
+# Nilai kosong tetap dipertahankan sebagai <NA>
+count_columns = [
+    "desa_3g",
+    "desa_2_5g",
+    "desa_tanpa_sinyal",
+    "desa_4g_5g",
+    "jumlah_kategori_tersedia",
+    "total_desa",
+    "desa_dengan_sinyal",
+    "total_kategori",
+    "selisih_total"
+]
+
+for col in count_columns:
+    numeric = pd.to_numeric(final[col], errors="coerce")
+
+    # Memastikan tidak ada angka pecahan pada kolom jumlah
+    non_integer = numeric.dropna()[
+        numeric.dropna() % 1 != 0
+    ]
+
+    assert non_integer.empty, f"Ada angka pecahan pada kolom {col}"
+
+    final[col] = numeric.astype("Int64")
+
 # Menentukan urutan kolom dataset final
 final_columns = [
     "provinsi",
+    "wilayah",
     "desa_3g",
     "desa_2_5g",
     "desa_tanpa_sinyal",
@@ -153,7 +229,7 @@ print(final.columns.tolist())
 
 assert len(final) == 38, "Jumlah provinsi tidak sesuai!"
 assert final["provinsi"].nunique() == 38, "Ada provinsi duplikat!"
-assert len(final.columns) == 30, "Jumlah kolom tidak sesuai!"
+assert len(final.columns) == 31, "Jumlah kolom tidak sesuai!"
 
 # Simpan dataset final
 output_path = FINAL_DIR / "dashboard_pendidikan_final.csv"

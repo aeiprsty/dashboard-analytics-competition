@@ -31,6 +31,7 @@ assert not df.columns.duplicated().any(), "Ada nama kolom duplikat!"
 # Memastikan nama kolom sesuai standar dataset final
 expected_columns = [
     "provinsi",
+    "wilayah",
     "desa_3g",
     "desa_2_5g",
     "desa_tanpa_sinyal",
@@ -67,6 +68,20 @@ assert df.columns.tolist() == expected_columns, (
 )
 
 print("Kesesuaian nama dan urutan kolom: Sesuai")
+
+# Memastikan seluruh provinsi memiliki kelompok wilayah
+print("\nPemeriksaan kelompok wilayah:")
+print(df["wilayah"].value_counts())
+
+assert not df["wilayah"].isna().any(), (
+    "Ada provinsi yang belum memiliki kelompok wilayah!"
+)
+
+assert df["wilayah"].nunique() == 7, (
+    "Jumlah kelompok wilayah tidak sesuai!"
+)
+
+print("Pemetaan kelompok wilayah: Sesuai")
 
 # 2. Pemeriksaan tipe data
 print("\n2. PEMERIKSAAN TIPE DATA")
