@@ -1,0 +1,39 @@
+﻿Provinsi,Perkotaan,Perdesaan,Perkotaan+Perdesaan,Selisih_Kota_Desa,Wilayah_Lebih_Tinggi
+Aceh,26.55,9.47,15.49,17.08,Perkotaan
+Sumatera Utara,20.6,8.43,15.35,12.170000000000002,Perkotaan
+Sumatera Barat,28.84,11.83,20.48,17.009999999999998,Perkotaan
+Riau,27.82,11.5,17.98,16.32,Perkotaan
+Jambi,30.31,11.41,17.6,18.9,Perkotaan
+Sumatera Selatan,24.49,9.46,14.93,15.029999999999998,Perkotaan
+Bengkulu,35.23,12.14,19.79,23.089999999999996,Perkotaan
+Lampung,19.74,6.55,10.89,13.189999999999998,Perkotaan
+Kepulauan Bangka Belitung,24.55,11.72,19.29,12.83,Perkotaan
+Kepulauan Riau,32.63,10.01,30.36,22.620000000000005,Perkotaan
+DKI Jakarta,39.33,,39.33,,Tidak dapat dibandingkan
+Jawa Barat,21.95,6.11,18.6,15.84,Perkotaan
+Jawa Tengah,20.23,8.88,14.82,11.35,Perkotaan
+DI Yogyakarta,37.6,11.9,31.55,25.700000000000003,Perkotaan
+Jawa Timur,23.04,8.75,16.7,14.29,Perkotaan
+Banten,24.97,4.05,20.89,20.919999999999998,Perkotaan
+Bali,32.49,10.92,26.63,21.57,Perkotaan
+Nusa Tenggara Barat,15.26,7.9,11.73,7.359999999999999,Perkotaan
+Nusa Tenggara Timur,28.77,8.08,13.7,20.689999999999998,Perkotaan
+Kalimantan Barat,28.73,9.02,16.51,19.71,Perkotaan
+Kalimantan Tengah,30.6,10.81,19.43,19.79,Perkotaan
+Kalimantan Selatan,26.43,10.68,18.51,15.75,Perkotaan
+Kalimantan Timur,36.31,17.73,30.52,18.580000000000002,Perkotaan
+Kalimantan Utara,29.59,16.71,25.05,12.879999999999999,Perkotaan
+Sulawesi Utara,23.59,10.38,17.77,13.209999999999999,Perkotaan
+Sulawesi Tengah,29.76,9.52,16.28,20.240000000000002,Perkotaan
+Sulawesi Selatan,31.61,13.71,22.13,17.9,Perkotaan
+Sulawesi Tenggara,31.14,12.35,19.77,18.79,Perkotaan
+Gorontalo,26.43,9.21,17.23,17.22,Perkotaan
+Sulawesi Barat,28.37,10.48,13.98,17.89,Perkotaan
+Maluku,28.36,9.06,17.73,19.299999999999997,Perkotaan
+Maluku Utara,34.88,9.23,17.02,25.650000000000002,Perkotaan
+Papua Barat,34.26,11.53,18.35,22.729999999999997,Perkotaan
+Papua Barat Daya,27.6,10.68,19.63,16.92,Perkotaan
+Papua,35.64,7.84,24.59,27.8,Perkotaan
+Papua Selatan,36.04,6.34,17.0,29.7,Perkotaan
+Papua Tengah,30.12,1.49,7.88,28.630000000000003,Perkotaan
+Papua Pegunungan,17.27,1.13,2.31,16.14,Perkotaan
