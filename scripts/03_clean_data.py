@@ -94,8 +94,11 @@ def clean_sinyal():
     for col in numeric_cols:
         df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    return df[["Provinsi"] + numeric_cols]
+    # Mengubah kategori sinyal kosong menjadi 0
+    # karena menunjukkan tidak ada desa pada kategori tersebut
+    df[numeric_cols] = df[numeric_cols].fillna(0)
 
+    return df[["Provinsi"] + numeric_cols]
 
 # ==========================================
 # LOAD TABEL 13, 14, DAN 25
